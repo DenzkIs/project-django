@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from blog.models import Post
 # from django.http import HttpResponse
 #
 # # Create your views here.
@@ -10,24 +11,24 @@ from django.shortcuts import render
 
 # возвращаем теперь не HttpResponse, а render, чтобы воспользоваться html-шаблоном
 
-posts = [
-    {
-        'author': 'Max',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'Feb 25, 2022',
-    },
-    {
-        'author': 'Ian',
-        'title': 'Blog Post 2',
-        'content': 'Second post content',
-        'date_posted': 'Feb 23, 2022',
-    },
-]
+# posts = [
+#     {
+#         'author': 'Max',
+#         'title': 'Blog Post 1',
+#         'content': 'First post content',
+#         'date_posted': 'Feb 25, 2022',
+#     },
+#     {
+#         'author': 'Ian',
+#         'title': 'Blog Post 2',
+#         'content': 'Second post content',
+#         'date_posted': 'Feb 23, 2022',
+#     },
+# ]
 
 def home(request):
     context = {
-        'posts': posts,
+        'posts': Post.objects.all(),
     }
     return render(request, 'blog/home.html', context)
 
