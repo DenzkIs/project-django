@@ -1,1 +1,1 @@
-#Учебный Django проект. Blog
+# Учебный Django проект. Blog
