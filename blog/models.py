@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 # from django.contrib.auth.models import User  # менее безопасный метод вызова модель User
 from django.contrib.auth import get_user_model  # это более безопасный вызов модели User
 
@@ -13,3 +14,6 @@ class Post(models.Model):
 
     def __str__(self):
         return f'Post {self.title} by {self.author.username}'  # Откуда взяться username?
+
+    def get_absolute_url(self):
+        return reverse("post-detail", kwargs = {"pk": self.pk})
